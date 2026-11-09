@@ -6,7 +6,7 @@
 ./curriculum/plantillas/generar_pdfs.sh
 ```
 
-Los PDF quedan en `curriculum/pdf/` y se copian a `landing/assets/cv/`. Para cambiar contenido, edita el `.html` correspondiente y vuelve a ejecutar el script.
+Los PDF quedan en `curriculum/pdf/` y se copian a `landing/public/assets/cv/`. Para cambiar contenido, edita el `.html` correspondiente y vuelve a ejecutar el script.
 
 **Desde cero con una IA:** copia todo lo que está debajo de la línea y pégalo en Claude (u otra IA con capacidad de generar archivos). Adjunta también tu foto de perfil (cuadrada, fondo claro).
 

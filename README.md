@@ -1,10 +1,9 @@
 # ISW Eduardo Fernández — Perfil profesional
 
 [![Sitio en vivo](https://img.shields.io/badge/sitio-isw--eduardo--fernandez.vercel.app-243a5e?logo=vercel&logoColor=white)](https://isw-eduardo-fernandez.vercel.app)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
-![Sin dependencias](https://img.shields.io/badge/dependencias-0-2e9e7c)
+![Angular 22](https://img.shields.io/badge/Angular-22-DD0031?logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Vitest](https://img.shields.io/badge/tests-Vitest-6E9F18?logo=vitest&logoColor=white)
 
 Sitio personal y currículum de **Eduardo Fernández**, Senior Backend Engineer y Tech Lead con más de 6 años diseñando y desarrollando APIs con Java, Kotlin, Spring y MuleSoft.
 
@@ -25,7 +24,7 @@ Sitio personal y currículum de **Eduardo Fernández**, Senior Backend Engineer 
 
 | Parte | Descripción |
 | --- | --- |
-| **Landing page** | Sitio estático con perfil, experiencia, habilidades, proyectos de GitHub en vivo y descarga del CV. Bilingüe (español / inglés). |
+| **Landing page** | Aplicación Angular 22 con perfil, experiencia, habilidades, proyectos de GitHub en vivo y descarga del CV. Bilingüe (español / inglés). |
 | **Currículum** | 4 versiones en PDF: español e inglés, cada una con diseño y en versión sencilla para sistemas ATS. |
 | **Plantillas** | HTML de cada versión del CV y un script que genera los PDF con Chrome. |
 | **Prompt** | Instrucciones completas para recrear el CV desde cero con una IA. |
@@ -48,16 +47,19 @@ isw_efm_profile/
 │       ├── cv_en_ats.html
 │       ├── foto.jpg
 │       └── generar_pdfs.sh     # Genera los 4 PDF y los copia a la landing
-└── landing/
-    ├── index.html
-    ├── styles.css
-    ├── app.js                  # Idioma, proyectos de GitHub y filtros
-    └── assets/                 # Foto y PDF descargables
+└── landing/                    # Aplicación Angular 22
+    ├── src/app/
+    │   ├── i18n/               # Textos en español e inglés y servicio de idioma
+    │   ├── github/             # Servicio de repos de GitHub y copia guardada
+    │   └── sections/           # Un componente por sección
+    ├── src/styles.css          # Estilos globales
+    ├── public/assets/          # Foto y PDF descargables
+    └── vercel.json             # Configuración de build en Vercel
 ```
 
 ## Landing page
 
-HTML, CSS y JavaScript sin frameworks ni paso de compilación.
+Aplicación **Angular 22** con componentes standalone, signals y detección de cambios sin zone.js.
 
 **Secciones:** encabezado con resumen en forma de respuesta de API (`GET /engineers/eduardo-fernandez → 200 OK`), perfil, experiencia en línea de tiempo, proyectos de GitHub, habilidades y contacto con descarga del CV.
 
@@ -72,16 +74,20 @@ HTML, CSS y JavaScript sin frameworks ni paso de compilación.
 **Ejecutar en local**
 
 ```bash
-python3 -m http.server 4300 --directory landing
+cd landing
+npm install
+npm start        # http://localhost:4200
+npm test         # pruebas unitarias con Vitest
 ```
 
-Después abre http://localhost:4300.
+**Configuración:**
 
-**Configuración:** el usuario de GitHub y los repos ocultos se cambian al inicio de `landing/app.js`:
+- Textos en español e inglés: `landing/src/app/i18n/content.ts`.
+- Usuario de GitHub y repos ocultos: `landing/src/app/github/github.service.ts`.
 
-```js
-const GITHUB_USER = "ilusCode";
-const HIDDEN_REPOS = ["ilusCode"];
+```ts
+export const GITHUB_USER = 'ilusCode';
+const HIDDEN_REPOS = ['ilusCode'];
 ```
 
 ## Currículum
@@ -89,7 +95,7 @@ const HIDDEN_REPOS = ["ilusCode"];
 Para actualizar el CV:
 
 1. Edita la plantilla correspondiente en `curriculum/plantillas/`.
-2. Genera los PDF. Requiere Google Chrome; los archivos quedan en `curriculum/pdf/` y se copian a `landing/assets/cv/`.
+2. Genera los PDF. Requiere Google Chrome; los archivos quedan en `curriculum/pdf/` y se copian a `landing/public/assets/cv/`.
 
    ```bash
    ./curriculum/plantillas/generar_pdfs.sh
@@ -105,7 +111,7 @@ CHROME="/ruta/a/chrome" ./curriculum/plantillas/generar_pdfs.sh
 
 ## Despliegue
 
-La landing está publicada en **Vercel** como sitio estático, desde la carpeta `landing/`:
+La landing está publicada en **Vercel** desde la carpeta `landing/`. Vercel instala dependencias y ejecuta `npm run build`, según `landing/vercel.json`:
 
 ```bash
 cd landing && vercel deploy --prod

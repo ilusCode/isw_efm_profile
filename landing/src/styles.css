@@ -71,6 +71,8 @@ p { margin: 0; }
 .status { margin-left: auto; color: #8fd3bd; }
 .status.pending { color: #8ea0bf; }
 .spec-body { margin: 0; padding: 20px 22px 24px; font: 400 .9rem/1.7 var(--mono); color: #c9d4e6; white-space: pre; overflow-x: auto; }
+.spec-body .line { display: block; }
+.spec-body .indent { padding-left: 2ch; }
 .spec-body .k { color: #9ec3ff; }
 .spec-body .s { color: #f2d49b; }
 .spec-body .p { color: #6f83a6; }
