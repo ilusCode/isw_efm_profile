@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>CV Eduardo Fernández</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #243a5e;
+    --ink: #1c2b45;
+    --text: #3a4456;
+    --muted: #6b7484;
+    --side: #e6e8ec;
+    --side-w: 2.75in;
+  }
+  @page { size: letter; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 11in; overflow: hidden; }
+  html {
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    background: linear-gradient(to right, var(--side) 0, var(--side) var(--side-w), #fff var(--side-w));
+  }
+  body { font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif; color: var(--text); font-size: 9pt; line-height: 1.4; width: 8.5in; }
+
+  /* Header */
+  header { background: var(--navy); height: 1.8in; position: relative; color: #fff; }
+  header .who { position: absolute; left: calc(var(--side-w) + 0.45in); right: 0.5in; top: 0.55in; }
+  header h1 { font-size: 30pt; font-weight: 700; letter-spacing: 0.5pt; line-height: 1.05; }
+  header .role { margin-top: 10pt; font-size: 9.6pt; font-weight: 600; letter-spacing: 2.2pt; text-transform: uppercase; color: #dbe3f0; }
+
+  .photo { position: absolute; left: 0.45in; top: 0.32in; width: 1.85in; height: 1.85in; border-radius: 50%; background: #fff; padding: 0.08in; box-shadow: 0 2px 6px rgba(0,0,0,.12); }
+  .photo img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; transform: scale(1.04); display: block; }
+  .photo .clip { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; }
+
+  .wrap { display: grid; grid-template-columns: var(--side-w) 1fr; }
+
+  /* Sidebar */
+  aside { padding: 0.5in 0.3in 0.25in 0.38in; }
+  aside section + section { margin-top: 0.13in; }
+  aside h2 { background: #fff; color: var(--ink); font-size: 10.5pt; font-weight: 700; letter-spacing: 2.4pt; text-transform: uppercase; padding: 5pt 10pt; margin-bottom: 9pt; }
+  .contact li { list-style: none; display: grid; grid-template-columns: 16pt 1fr; gap: 6pt; align-items: start; margin-bottom: 5pt; color: var(--ink); font-size: 8.6pt; word-break: break-word; }
+  .contact svg { width: 12pt; height: 12pt; fill: var(--navy); margin-top: 1pt; }
+  .contact a { color: var(--ink); text-decoration: none; }
+  .lang li { list-style: none; display: flex; justify-content: space-between; font-size: 8.8pt; margin-bottom: 4pt; }
+  .lang b { color: var(--ink); font-weight: 700; }
+  .edu b { display: block; color: var(--ink); font-size: 9pt; font-weight: 700; }
+  .edu span { display: block; font-size: 8.6pt; }
+  .edu .yr { color: var(--muted); margin-top: 2pt; }
+  .skill { margin-bottom: 3.5pt; break-inside: avoid; }
+  .skill h3 { font-size: 7.8pt; font-weight: 700; letter-spacing: 1pt; text-transform: uppercase; color: var(--navy); margin-bottom: 3pt; }
+  .tags { display: flex; flex-wrap: wrap; gap: 3pt; }
+  .tags span { background: #fff; color: var(--ink); font-size: 7.8pt; font-weight: 500; padding: 1.5pt 6pt; border-radius: 3pt; }
+
+  /* Main */
+  main { padding: 0.28in 0.5in 0.3in 0.42in; }
+  main h2 { font-size: 13.5pt; font-weight: 800; letter-spacing: 2pt; text-transform: uppercase; color: var(--ink); margin-bottom: 7pt; padding-bottom: 4pt; border-bottom: 2pt solid var(--navy); }
+  main section + section { margin-top: 0.17in; }
+  .profile { text-align: left; }
+  .job { break-inside: avoid; }
+  .job + .job { margin-top: 0.13in; }
+  .job h3 { font-size: 11pt; font-weight: 700; color: var(--ink); text-transform: uppercase; letter-spacing: 0.6pt; }
+  .job .meta { display: flex; justify-content: space-between; font-style: italic; font-weight: 600; color: var(--navy); font-size: 9.4pt; margin: 1pt 0 5pt; }
+  .job ul { padding-left: 12pt; }
+  .job li { margin-bottom: 2.5pt; }
+  .job li::marker { color: var(--navy); }
+</style>
+</head>
+<body>
+<header>
+  <div class="photo"><div class="clip"><img src="foto.jpg" alt="Eduardo Fernández"></div></div>
+  <div class="who">
+    <h1>Eduardo Fernández</h1>
+    <div class="role">Senior Backend Engineer · Tech Lead</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <aside>
+    <section>
+      <h2>Contacto</h2>
+      <ul class="contact">
+        <li><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><span>+52 722 582 3798</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg><a href="mailto:isw_efm@icloud.com">isw_efm@icloud.com</a></li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg><a href="https://github.com/iluscode">github.com/iluscode</a></li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.93 6h-2.95a15.6 15.6 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.93 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14a8.2 8.2 0 0 1 0-4h3.38a16.5 16.5 0 0 0 0 4H4.26zm.81 2h2.95c.32 1.25.78 2.45 1.38 3.56A7.99 7.99 0 0 1 5.07 16zm2.95-8H5.07a7.99 7.99 0 0 1 4.33-3.56A15.6 15.6 0 0 0 8.02 8zM12 19.96A14.1 14.1 0 0 1 10.09 16h3.82A14.1 14.1 0 0 1 12 19.96zM14.34 14H9.66a14.7 14.7 0 0 1 0-4h4.68a14.7 14.7 0 0 1 0 4zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14a16.5 16.5 0 0 0 0-4h3.38a8.2 8.2 0 0 1 0 4h-3.38z"/></svg><a href="https://isw-eduardo-fernandez.vercel.app">isw-eduardo-fernandez<wbr>.vercel.app</a></li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>Toluca, México</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Habilidades</h2>
+      <div class="skill"><h3>Lenguajes</h3><div class="tags"><span>Java</span><span>Kotlin</span><span>Python</span><span>Go</span></div></div>
+      <div class="skill"><h3>Frameworks e integración</h3><div class="tags"><span>Spring</span><span>MuleSoft</span><span>Flask</span><span>FastAPI</span></div></div>
+      <div class="skill"><h3>Mensajería</h3><div class="tags"><span>RabbitMQ</span><span>IBM MQ</span></div></div>
+      <div class="skill"><h3>Bases de datos</h3><div class="tags"><span>Oracle</span><span>MySQL</span><span>MongoDB</span><span>Redis</span><span>Firebase</span></div></div>
+      <div class="skill"><h3>Cloud y DevOps</h3><div class="tags"><span>AWS</span><span>Kubernetes</span><span>OpenShift</span><span>Jenkins</span><span>Git</span><span>Maven</span><span>Gradle</span><span>Nexus</span></div></div>
+      <div class="skill"><h3>Calidad y monitoreo</h3><div class="tags"><span>JUnit</span><span>Selenium</span><span>SonarQube</span><span>Veracode</span><span>Splunk</span></div></div>
+      <div class="skill"><h3>IA aplicada al desarrollo</h3><div class="tags"><span>Claude</span><span>GitHub Copilot</span><span>IA propia del cliente</span></div></div>
+      <div class="skill"><h3>Metodologías</h3><div class="tags"><span>Scrum</span></div></div>
+    </section>
+
+    <section>
+      <h2>Idiomas</h2>
+      <ul class="lang">
+        <li><b>Español</b><span>Nativo</span></li>
+        <li><b>Inglés</b><span>Conversacional</span></li>
+      </ul>
+    </section>
+  </aside>
+
+  <main>
+    <section>
+      <h2>Perfil profesional</h2>
+      <p class="profile">Ingeniero de Software con más de 6 años de experiencia diseñando y desarrollando APIs y servicios backend escalables con Java, Kotlin, Spring y MuleSoft. Punto de contacto técnico entre Arquitectura y los equipos de Backend, con experiencia como Tech Lead coordinando equipos de desarrollo, traduciendo requerimientos de negocio en soluciones técnicas y asegurando la entrega en tiempo. Enfoque en calidad de código, soporte a producción y mejora continua de servicios en entornos con Kubernetes, OpenShift, AWS y pipelines CI/CD. En el último año, integración de herramientas de IA (Claude, GitHub Copilot) en el flujo de desarrollo para acelerar las entregas.</p>
+    </section>
+
+    <section>
+      <h2>Experiencia</h2>
+      <div class="job">
+        <h3>Senior Backend Engineer</h3>
+        <div class="meta"><span>Hitss Solution</span><span>Agosto 2022 – Actualidad</span></div>
+        <ul>
+          <li>Punto de contacto técnico entre el área de Arquitectura y los equipos de Backend, alineando las definiciones de diseño con la implementación.</li>
+          <li>Análisis de requerimientos para traducir necesidades de negocio en soluciones técnicas.</li>
+          <li>Diseño de más de 10 APIs para la comunicación entre las distintas capas de la arquitectura, con contratos en OAS (OpenAPI) y RAML, que sustentaron la solución de los últimos 2 proyectos asignados.</li>
+          <li>Elaboración de ATD (documentos técnicos de trabajo) con especificaciones de lógica, diagramas y diseño de las APIs.</li>
+          <li>Desarrollo de más de 10 APIs con Java, Kotlin y MuleSoft para esos proyectos, incluyendo pruebas unitarias y carga de configuraciones.</li>
+          <li>Monitoreo de logs en desarrollo y producción, seguimiento y resolución de incidentes productivos que afectan a clientes, y mejora continua de los servicios.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>Backend Developer &amp; Tech Lead</h3>
+        <div class="meta"><span>GFT</span><span>Enero 2020 – Agosto 2022</span></div>
+        <ul>
+          <li>Desarrollo de APIs con Java y Spring Framework.</li>
+          <li>Liderazgo y coordinación del equipo de desarrollo para cumplir objetivos y fechas de entrega del proyecto.</li>
+          <li>Análisis de requerimientos y diseño de soluciones técnicas alineadas al negocio.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Educación</h2>
+      <div class="job">
+        <h3>Ingeniería en Software</h3>
+        <div class="meta"><span>Unidad Académica Profesional Tianguistenco (UAEMex)</span><span>2015 – 2020</span></div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>
