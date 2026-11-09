@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ISW Eduardo Fernández · Senior Backend Engineer</title>
+  <meta name="description" content="Eduardo Fernández, Senior Backend Engineer y Tech Lead. APIs con Java, Kotlin, Spring y MuleSoft.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23243a5e'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='15' fill='white' text-anchor='middle'%3EEF%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Saltar al contenido</a>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top">ISW Eduardo Fernández</a>
+      <nav aria-label="Secciones">
+        <a href="#experiencia" data-i18n="nav.exp">Experiencia</a>
+        <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
+        <a href="#habilidades" data-i18n="nav.skills">Habilidades</a>
+        <a href="#contacto" data-i18n="nav.contact">Contacto</a>
+      </nav>
+      <button class="lang" type="button" id="langToggle" aria-label="Cambiar idioma">EN</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <img class="avatar" src="assets/foto.jpg" alt="Foto de Eduardo Fernández" width="112" height="112">
+          <h1>Eduardo Fernández</h1>
+          <p class="role" data-i18n="hero.role">Senior Backend Engineer y Tech Lead</p>
+          <p class="lead" data-i18n="hero.lead">Diseño y construyo APIs que conectan las capas de un sistema: del contrato en OAS o RAML al servicio en producción, con Java, Kotlin, Spring y MuleSoft.</p>
+          <div class="actions">
+            <a class="btn primary" id="cvPrimary" href="assets/cv/CV_Eduardo_Fernandez_Diseno.pdf" download data-i18n="hero.cv">Descargar CV</a>
+            <a class="btn" href="mailto:isw_efm@icloud.com" data-i18n="hero.mail">Escríbeme</a>
+          </div>
+        </div>
+
+        <figure class="spec" aria-label="Resumen del perfil en formato de respuesta de API">
+          <div class="spec-head">
+            <span class="verb">GET</span>
+            <span class="path">/engineers/eduardo-fernandez</span>
+            <span class="status" id="status">200 OK</span>
+          </div>
+          <pre class="spec-body" id="specBody"></pre>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Perfil -->
+    <section class="section" id="perfil">
+      <div class="wrap narrow">
+        <h2 data-i18n="profile.title">Perfil</h2>
+        <p class="prose" data-i18n="profile.body">Ingeniero de Software con más de 6 años de experiencia diseñando y desarrollando APIs y servicios backend escalables. Soy el punto de contacto técnico entre Arquitectura y los equipos de Backend, y he trabajado como Tech Lead coordinando equipos, traduciendo requerimientos de negocio en soluciones técnicas y entregando en tiempo. Me enfoco en calidad de código, soporte a producción y mejora continua en entornos con Kubernetes, OpenShift, AWS y CI/CD. En el último año integré herramientas de IA (Claude, GitHub Copilot) al flujo de desarrollo para acelerar las entregas.</p>
+      </div>
+    </section>
+
+    <!-- Experiencia -->
+    <section class="section alt" id="experiencia">
+      <div class="wrap narrow">
+        <h2 data-i18n="exp.title">Experiencia</h2>
+        <ol class="timeline">
+          <li class="job">
+            <div class="when" data-i18n="exp.hitss.when">Ago 2022 – hoy</div>
+            <div class="what">
+              <h3>Senior Backend Engineer <span class="at">Hitss Solution</span></h3>
+              <ul data-i18n-list="exp.hitss.items"></ul>
+            </div>
+          </li>
+          <li class="job">
+            <div class="when" data-i18n="exp.gft.when">Ene 2020 – Ago 2022</div>
+            <div class="what">
+              <h3>Backend Developer &amp; Tech Lead <span class="at">GFT</span></h3>
+              <ul data-i18n-list="exp.gft.items"></ul>
+            </div>
+          </li>
+          <li class="job edu">
+            <div class="when">2015 – 2020</div>
+            <div class="what">
+              <h3><span data-i18n="edu.degree">Ingeniería en Software</span> <span class="at">UAEMex, Tianguistenco</span></h3>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Proyectos -->
+    <section class="section" id="proyectos">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 data-i18n="projects.title">Proyectos en GitHub</h2>
+          <p class="muted" data-i18n="projects.sub">Repositorios públicos, cargados en vivo desde GitHub.</p>
+        </div>
+        <div class="filters" id="filters" role="group" aria-label="Filtrar por lenguaje"></div>
+        <ul class="projects" id="projects" aria-live="polite"></ul>
+        <p class="muted small" id="projectsNote"></p>
+        <a class="btn" href="https://github.com/ilusCode" target="_blank" rel="noopener" data-i18n="projects.all">Ver perfil en GitHub</a>
+      </div>
+    </section>
+
+    <!-- Habilidades -->
+    <section class="section alt" id="habilidades">
+      <div class="wrap">
+        <h2 data-i18n="skills.title">Habilidades</h2>
+        <dl class="skills" id="skills"></dl>
+        <p class="langs"><strong data-i18n="langs.title">Idiomas</strong> <span data-i18n="langs.body">Español nativo, inglés conversacional</span></p>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="section contact" id="contacto">
+      <div class="wrap narrow">
+        <h2 data-i18n="contact.title">Hablemos</h2>
+        <p class="prose" data-i18n="contact.body">Busco posiciones como Senior Backend Engineer o Tech Lead. Escríbeme y te respondo pronto.</p>
+        <ul class="contact-list">
+          <li><a href="mailto:isw_efm@icloud.com">isw_efm@icloud.com</a></li>
+          <li><a href="https://www.linkedin.com/in/eduardo-fernandez-morales/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/ilusCode" target="_blank" rel="noopener">GitHub</a></li>
+          <li data-i18n="contact.city">Toluca, México</li>
+        </ul>
+        <div class="downloads">
+          <h3 data-i18n="contact.cvs">Descarga mi CV</h3>
+          <ul>
+            <li><a href="assets/cv/CV_Eduardo_Fernandez_Diseno.pdf" download data-i18n="cv.es">Español</a></li>
+            <li><a href="assets/cv/CV_Eduardo_Fernandez.pdf" download data-i18n="cv.esPlain">Español, texto simple</a></li>
+            <li><a href="assets/cv/Resume_Eduardo_Fernandez_EN.pdf" download data-i18n="cv.en">Inglés</a></li>
+            <li><a href="assets/cv/Resume_Eduardo_Fernandez_EN_ATS.pdf" download data-i18n="cv.enPlain">Inglés, texto simple</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">© <span id="year"></span> Eduardo Fernández</div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

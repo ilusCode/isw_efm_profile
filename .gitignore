@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Secretos y configuración local de Vercel
+.env*
+.vercel
+
+# Configuración local del editor / Claude
+.claude/
+
+# Carpeta creada por error con un "git init" sobre la URL del repo
+https:/
