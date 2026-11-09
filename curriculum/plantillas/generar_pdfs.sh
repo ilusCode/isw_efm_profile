@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Genera los 4 PDF del CV a partir de las plantillas HTML de esta carpeta.
 # Uso: ./curriculum/plantillas/generar_pdfs.sh   (requiere Google Chrome instalado)
-# Los PDF quedan en curriculum/pdf/ y se copian a landing/assets/cv/ si existe.
+# Los PDF quedan en curriculum/pdf/ y se copian a landing/public/assets/cv/ si existe.
 set -euo pipefail
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 OUT="${1:-$DIR/../pdf}"
-LANDING="$DIR/../../landing/assets/cv"
+LANDING="$DIR/../../landing/public/assets/cv"
 CHROME="${CHROME:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}"
 mkdir -p "$OUT"
 OUT="$(cd "$OUT" && pwd)"
@@ -27,6 +27,6 @@ generar cv_en_ats.html    Resume_Eduardo_Fernandez_EN_ATS.pdf
 if [ -d "$LANDING" ]; then
   cp "$OUT"/*.pdf "$LANDING"/
   LANDING_DIR="$(cd "$DIR/../../landing" && pwd)"
-  echo "✓ Copiados a landing/assets/cv"
+  echo "✓ Copiados a landing/public/assets/cv"
   echo "  Para publicarlos: cd \"$LANDING_DIR\" && vercel deploy --prod"
 fi
