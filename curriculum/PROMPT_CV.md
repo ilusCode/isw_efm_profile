@@ -1,63 +1,76 @@
-# Prompt para recrear mi CV (4 versiones en PDF)
+# Prompt para recrear mi CV, landing page y repositorio
 
-**Copia exacta:** las plantillas HTML originales y la foto están en `curriculum/plantillas/`. Para regenerar los 4 PDF idénticos (requiere Google Chrome):
+Este archivo sirve para dos cosas: regenerar todo con lo que ya existe en el repositorio, o pedirle a una IA que lo recree desde cero.
 
-```bash
-./curriculum/plantillas/generar_pdfs.sh
-```
+## Uso rápido (con el repositorio)
 
-Los PDF quedan en `curriculum/pdf/` y se copian a `landing/public/assets/cv/`. Para cambiar contenido, edita el `.html` correspondiente y vuelve a ejecutar el script.
+| Quiero… | Comando |
+| --- | --- |
+| Regenerar los 4 PDF del CV (requiere Google Chrome) | `./curriculum/plantillas/generar_pdfs.sh` |
+| Ver la landing en local | `cd landing && npm install && npm start` → http://localhost:4200 |
+| Correr las pruebas de la landing | `cd landing && npm test` |
+| Publicar la landing en producción | `cd landing && vercel deploy --prod` |
 
-**Desde cero con una IA:** copia todo lo que está debajo de la línea y pégalo en Claude (u otra IA con capacidad de generar archivos). Adjunta también tu foto de perfil (cuadrada, fondo claro).
+- Los PDF quedan en `curriculum/pdf/` y el script también los copia a `landing/public/assets/cv/`.
+- Para cambiar el CV, edita el `.html` correspondiente en `curriculum/plantillas/` y vuelve a ejecutar el script.
+- Para cambiar textos de la landing, edita `landing/src/app/i18n/content.ts`.
+
+## Desde cero con una IA
+
+Copia todo lo que está debajo de la línea y pégalo en Claude (u otra IA que pueda crear archivos y ejecutar comandos). Adjunta tu foto de perfil (cuadrada, fondo claro). Puedes pedir solo una parte: **Parte 1** (CV), **Parte 2** (landing) o **Parte 3** (repositorio y despliegue).
 
 ---
 
-Necesito que generes mi CV en **4 archivos PDF** a partir de la información de abajo. No inventes datos ni cifras: usa solo lo que está aquí. Si algo no cabe, ajusta tamaños de fuente y espaciados, pero no elimines contenido.
+Necesito que generes mi CV en PDF, una landing page personal en Angular y el repositorio que los contiene, a partir de la información de abajo. **No inventes datos ni cifras**: usa solo lo que está aquí. Si algo no cabe en el CV, ajusta tamaños de fuente y espaciados, pero no elimines contenido. Antes de entregar, revisa visualmente cada PDF y la landing en escritorio y en móvil.
+
+# Parte 1 — Currículum (4 PDF)
 
 ## Archivos a generar
 
 | Archivo | Idioma | Formato |
 | --- | --- | --- |
-| `CV_Eduardo_Fernandez_Diseno.pdf` | Español | Con diseño (descrito abajo), 1 página |
+| `CV_Eduardo_Fernandez_Diseno.pdf` | Español | Con diseño (descrito abajo) |
 | `CV_Eduardo_Fernandez.pdf` | Español | Sencillo para ATS, una columna |
-| `Resume_Eduardo_Fernandez_EN.pdf` | Inglés | Con diseño, 1 página |
-| `Resume_Eduardo_Fernandez_EN_ATS.pdf` | Inglés | Sencillo para ATS, 1 página |
+| `Resume_Eduardo_Fernandez_EN.pdf` | Inglés | Con diseño |
+| `Resume_Eduardo_Fernandez_EN_ATS.pdf` | Inglés | Sencillo para ATS, una columna |
 
-Todos en **tamaño carta (Letter, 8.5 × 11 in)**. Método sugerido: maquetar en HTML/CSS e imprimir a PDF con Chrome headless (`--print-to-pdf --no-pdf-header-footer`). Revisa visualmente cada PDF y confirma que no haya texto cortado ni una segunda página vacía.
+Todos en **tamaño carta (Letter, 8.5 × 11 in)** y en **1 página**. Método: maquetar cada versión en HTML/CSS e imprimir a PDF con Chrome headless (`--headless=new --print-to-pdf --no-pdf-header-footer`). Confirma que no haya texto cortado ni una segunda página vacía. Guarda las plantillas HTML, la foto recortada en círculo y un script `generar_pdfs.sh` que regenere los 4 PDF.
 
-## Especificación del diseño (versiones "Diseño" y "EN")
+## Diseño (versiones con diseño, español e inglés)
 
 - **Tipografía:** Montserrat (Google Fonts), pesos 400–800.
-- **Colores:** azul marino `#243a5e` (encabezado, acentos), texto títulos `#1c2b45`, texto cuerpo `#3a4456`, gris barra lateral `#e6e8ec`, blanco.
+- **Colores:** azul marino `#243a5e` (encabezado, acentos), títulos `#1c2b45`, cuerpo `#3a4456`, gris de barra lateral `#e6e8ec`, blanco.
 - **Encabezado:** banda azul marino de ~1.8 in de alto, a todo el ancho.
   - Nombre en blanco, ~30 pt, peso 700.
-  - Debajo: "SENIOR BACKEND ENGINEER · TECH LEAD" en mayúsculas, ~9.6 pt, espaciado entre letras amplio (~2.2 pt), color azul claro `#dbe3f0`.
+  - Debajo: "SENIOR BACKEND ENGINEER · TECH LEAD" en mayúsculas, ~9.6 pt, espaciado entre letras ~2.2 pt, color `#dbe3f0`.
   - Foto circular (~1.85 in) con borde blanco y sombra suave, a la izquierda, montada entre el encabezado y la barra lateral.
 - **Cuerpo en dos columnas:**
-  - **Barra lateral izquierda** (~2.75 in, fondo gris `#e6e8ec`, se extiende hasta el final de la página): secciones Contacto (con íconos de teléfono, correo, GitHub y ubicación), Habilidades (agrupadas por categoría, cada tecnología como "chip" blanco con esquinas redondeadas) e Idiomas.
-  - Los títulos de sección de la barra lateral van en mayúsculas dentro de un recuadro blanco, con espaciado entre letras.
-  - **Columna principal derecha** (fondo blanco): Perfil profesional, Experiencia y Educación. Títulos de sección en mayúsculas, peso 800, con línea inferior azul marino de 2 pt.
-  - Cada puesto: título del puesto en mayúsculas y negritas; debajo, en una línea, la empresa (izquierda) y las fechas (derecha) en cursiva azul marino; luego viñetas con marcador azul.
-- Todo debe caber en **1 página**.
+  - **Barra lateral izquierda** (~2.75 in, fondo `#e6e8ec`, hasta el final de la página):
+    - **Contacto** con íconos: teléfono, correo, GitHub, sitio web (globo; la dirección puede partirse en dos líneas antes de `.vercel.app`) y ubicación.
+    - **Habilidades** agrupadas por categoría; cada tecnología como "chip" blanco con esquinas redondeadas.
+    - **Idiomas.**
+    - Títulos de sección en mayúsculas dentro de un recuadro blanco, con espaciado entre letras. Espaciado compacto para que todo quepa.
+  - **Columna principal derecha** (fondo blanco): Perfil profesional, Experiencia y Educación. Títulos en mayúsculas, peso 800, con línea inferior azul marino de 2 pt.
+  - Cada puesto: título en mayúsculas y negritas; debajo, en una línea, empresa (izquierda) y fechas (derecha) en cursiva azul marino; luego viñetas con marcador azul.
 
-## Especificación de la versión sencilla (ATS)
+## Versión sencilla (ATS)
 
 - Una sola columna, sin foto, sin íconos, sin tablas ni colores.
-- Fuente Arial ~9.8–10 pt; márgenes ~0.45–0.6 in.
-- Encabezado: nombre, título profesional, y una línea de contacto separada por " | ".
+- Fuente Arial ~9.8 pt; márgenes ~0.45 × 0.6 in.
+- Encabezado: nombre, título profesional y una línea de contacto separada por " | " (ciudad, teléfono, correo, GitHub, sitio web).
 - Títulos de sección estándar en mayúsculas con una línea delgada debajo.
 - Habilidades como líneas "**Categoría:** tecnologías".
-- La versión en inglés debe caber en 1 página; la versión en español puede ocupar 2.
 
 ## Datos personales
 
 - **Nombre:** Eduardo Fernández
 - **Título:** Senior Backend Engineer | Tech Lead
 - **Ubicación:** Toluca, México (no incluir dirección completa)
-- **Teléfono:** +52 722 582 3798
+- **Teléfono:** +52 722 582 3798 (solo en los PDF, no en la landing)
 - **Correo:** isw_efm@icloud.com
-- **GitHub:** github.com/iluscode (enlace: https://github.com/iluscode)
-- **Sitio web:** isw-eduardo-fernandez.vercel.app (enlace: https://isw-eduardo-fernandez.vercel.app)
+- **GitHub:** github.com/iluscode (https://github.com/ilusCode)
+- **Sitio web:** isw-eduardo-fernandez.vercel.app (https://isw-eduardo-fernandez.vercel.app)
+- **LinkedIn:** https://www.linkedin.com/in/eduardo-fernandez-morales/ (se usa en la landing; aún no está en los PDF)
 
 ## Contenido en español
 
@@ -139,18 +152,108 @@ Software Engineer with 6+ years of experience designing and building scalable AP
 - **Spanish:** Native
 - **English:** Conversational
 
-## Criterios de redacción (para cualquier cambio futuro)
+# Parte 2 — Landing page (Angular 22)
+
+Una página personal que muestra el detalle del CV y mis proyectos de GitHub, pensada para reclutadores de vacantes Senior Backend y Tech Lead.
+
+## Tecnología
+
+- **Angular 22**: componentes standalone, signals, `ChangeDetectionStrategy.OnPush` y sin zone.js. Sin SSR.
+- `HttpClient` con `withFetch()` para la API de GitHub.
+- Pruebas unitarias con **Vitest** (el runner por defecto de Angular 22).
+- Estilos en un solo archivo global (`src/styles.css`).
+
+## Estructura
+
+```
+src/app/
+├── app.ts                 # Composición: barra superior, secciones y pie
+├── app.config.ts          # provideHttpClient(withFetch())
+├── i18n/
+│   ├── content.ts         # TODO el texto en español e inglés (tipado)
+│   └── i18n.service.ts    # Idioma activo como signal, persistido en localStorage
+├── github/
+│   ├── github.service.ts  # Repos públicos de GitHub
+│   └── fallback-repos.ts  # Copia guardada si la API falla
+└── sections/              # top-bar, hero, profile, experience, projects, skills, contact
+public/assets/             # foto.jpg y los 4 PDF en cv/
+```
+
+## Diseño
+
+- **Fuentes:** IBM Plex Sans (texto) e IBM Plex Mono (solo la tarjeta de la API).
+- **Colores:** azul marino `#243a5e`, azul profundo `#16263f`, tinta `#14213a`, texto `#33405a`, gris claro `#f3f5f8`, líneas `#d6dce6`, verde de "200 OK" `#2e9e7c`.
+- **Título de la pestaña:** "ISW Eduardo Fernández · Senior Backend Engineer". Marca en la barra superior: "ISW Eduardo Fernández".
+- **Elemento distintivo (el único con protagonismo):** en el encabezado azul, a la derecha, una tarjeta oscura con forma de respuesta de API: `GET /engineers/eduardo-fernandez` → `200 OK` y un JSON con rol, experiencia, empresa actual, stack, contratos (OAS 3, RAML), infra, qué busca y ubicación. Las claves del JSON cambian con el idioma. Una sola animación al cargar: el estado muestra "…" y a los ~650 ms pasa a "200 OK" mientras el JSON aparece. Sin animación si el usuario tiene `prefers-reduced-motion`.
+- El resto de la página es sobrio: sin animaciones de entrada por sección.
+
+## Secciones (en este orden)
+
+1. **Barra superior fija:** marca, enlaces a Experiencia, Proyectos, Habilidades y Contacto, y botón ES/EN. En móvil se ocultan los enlaces.
+2. **Encabezado:** foto circular, nombre, rol, una frase sobre diseño de APIs, botones "Descargar CV" (PDF del idioma activo) y "Escríbeme" (mailto), y la tarjeta de la API.
+3. **Perfil:** el resumen profesional.
+4. **Experiencia:** línea de tiempo vertical (Hitss, GFT y la carrera).
+5. **Proyectos en GitHub:** tarjetas con nombre, descripción, hasta 6 temas, lenguaje con su color, fecha de actualización y estrellas; filtro por lenguaje.
+6. **Habilidades:** grupos por categoría e idiomas.
+7. **Contacto:** correo, LinkedIn, GitHub, ciudad y descarga de los 4 PDF. **Sin teléfono** (evita spam).
+
+## Comportamiento
+
+- **Idioma:** se detecta del navegador, se recuerda en `localStorage` y actualiza `<html lang>`. Todo el texto viene de `content.ts`.
+- **Proyectos:** `GET https://api.github.com/users/ilusCode/repos?per_page=100&sort=pushed`. Excluir forks, repos archivados y el repo del README de perfil (`ilusCode`). Ordenar por número de temas y luego por fecha. Si la API falla o no devuelve repos, usar la copia guardada y mostrar un aviso.
+- **Accesibilidad:** enlace "Saltar al contenido", foco visible, `aria-pressed` en los filtros y `aria-live` en la lista de proyectos.
+- **Responsive:** sin desbordes horizontales a 375 px; la tarjeta de la API hace scroll horizontal dentro de sí misma si no cabe.
+
+## Pruebas mínimas
+
+- La página muestra el nombre y las secciones.
+- El cambio a inglés actualiza los textos.
+- El filtrado de repos excluye forks, archivados y el repo de perfil.
+- Si GitHub responde con error, se muestran los repos guardados y el aviso.
+
+# Parte 3 — Repositorio y despliegue
+
+## Repositorio
+
+- GitHub: https://github.com/ilusCode/isw_efm_profile (público).
+- **Descripción:** "Sitio personal y currículum de Eduardo Fernández, Senior Backend Engineer y Tech Lead". **Sitio web:** la dirección de Vercel.
+- **Etiquetas:** `portfolio` `personal-website` `landing-page` `resume` `cv` `html` `css` `javascript` `vercel` `github-api` `backend` `java` `kotlin` `spring-boot` `mulesoft`.
+- **Ramas:** `develop` es la rama de trabajo; `main` es la rama de versiones y recibe cambios por PR desde `develop`. Las funciones nuevas van en ramas `feature/...` con PR hacia `develop`.
+- **Estructura:**
+
+```
+isw_efm_profile/
+├── README.md
+├── curriculum/
+│   ├── PROMPT_CV.md        # Este archivo
+│   ├── pdf/                # Los 4 PDF
+│   └── plantillas/         # 4 HTML, foto.jpg y generar_pdfs.sh
+└── landing/                # App Angular 22 + vercel.json
+```
+
+- **Nunca subir:** `node_modules/`, `dist/`, `.angular/`, `.vercel/`, `.env*` (Vercel guarda ahí un token), `.DS_Store`.
+
+## Despliegue en Vercel
+
+- Proyecto `isw-eduardo-fernandez`, desplegado desde la carpeta `landing/` con `vercel deploy --prod`.
+- `landing/vercel.json`: `framework: angular`, `installCommand: npm ci`, `buildCommand: npm run build`, `outputDirectory: dist/landing/browser`.
+- `landing/.vercelignore`: `.env*`, `.vercel`, `node_modules`, `dist`, `.angular`, `coverage`.
+- Dirección principal: https://isw-eduardo-fernandez.vercel.app. La dirección anterior `iluscode.vercel.app` redirige con un 308 permanente a la principal.
+- Después de desplegar, verificar: la página carga sin errores en consola, aparecen los proyectos, los PDF se descargan y `/.env.local` no expone el archivo real.
+
+# Criterios de redacción (para cualquier cambio futuro)
 
 - Viñetas cortas que empiecen con un verbo o sustantivo de acción; en inglés, verbos en pasado (Designed, Developed, Led).
 - Priorizar logros con números ("10+ APIs", "últimos 2 proyectos") sobre tareas genéricas.
-- El orden de las viñetas de Hitss pone primero el rol de enlace con Arquitectura, porque es lo que más pesa para Tech Lead.
-- No incluir dirección completa; solo ciudad.
+- En Hitss, la primera viñeta es el rol de enlace con Arquitectura, porque es lo que más pesa para Tech Lead.
+- No incluir dirección completa; solo ciudad. El teléfono va en los PDF, no en la landing.
 - El perfil apunta a vacantes de **Senior Backend Engineer** y **Tech Lead**.
+- La landing y los PDF deben decir lo mismo: si cambias el CV, actualiza también `landing/src/app/i18n/content.ts`.
 
-## Pendientes que mejorarían el CV (agregar cuando tenga el dato)
+# Pendientes que mejorarían el CV (agregar cuando tenga el dato)
 
 - Tamaño del equipo que coordiné en GFT y sector del proyecto.
 - Número de APIs o algún resultado medible en GFT.
 - Nivel de inglés concreto (B1/B2) o certificación.
-- Perfil de LinkedIn.
+- Agregar LinkedIn a los PDF.
 - Certificaciones (por ejemplo MuleSoft Certified Developer, AWS).
